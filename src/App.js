@@ -4,8 +4,10 @@ class App extends Component {
   constructor() {
     super();
 
+    let todoItems = [];
+
     this.state = {
-      todoItems: []
+      todoItems
     };
 
     this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -15,13 +17,14 @@ class App extends Component {
   onFormSubmit(event) {
     event.preventDefault();
 
-    let todoArr = [];
+    // let todoItemsArr = [this.state.todoItems];
 
     this.setState({
-      todoItems: todoArr.push(event.target.value)
+      todoItems: new Array(this.state.todoItems)
     });
 
-    console.log(this.state);
+    console.log(this.state.todoItems);
+
   }
 
   onChange(event) {
