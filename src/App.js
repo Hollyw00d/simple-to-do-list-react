@@ -4,33 +4,31 @@ class App extends Component {
   constructor() {
     super();
 
-    let todoItems = [];
+    this.todoItemsArr = [];
 
     this.state = {
-      todoItems
+      todoItems: this.todoItemsArr
     };
 
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
-  onFormSubmit(event) {
-    event.preventDefault();
-
-    // let todoItemsArr = [this.state.todoItems];
-
-    this.setState({
-      todoItems: new Array(this.state.todoItems)
-    });
-
-    console.log(this.state.todoItems);
-
-  }
-
   onChange(event) {
     this.setState({
       todoItems: event.target.value
-    })
+    });
+  }
+
+  onFormSubmit(event) {
+    event.preventDefault();
+
+    this.setState({
+      todoItems: event.target.value
+    });
+
+    console.log(this.state);
+
   }
 
   render() {
