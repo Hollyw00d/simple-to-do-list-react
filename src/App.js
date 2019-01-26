@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import DeleteBtn from './components/delete-btn';
 
-import TasksList from './components/task-list';
+import TasksListNumber from './components/task-list-number';
 
 class App extends Component {
 
@@ -101,7 +101,7 @@ class App extends Component {
           }
         </ul>
 
-        <TasksList completedCount={this.completedCount()} tasksLength={tasks.length} />  
+        <TasksListNumber completedCount={this.completedCount()} tasksLength={tasks.length} />  
 
         <DeleteBtn completedCount={this.completedCount()} handleDelete={this.deleteCompleted} />
 
