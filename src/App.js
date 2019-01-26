@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 import DeleteBtn from './components/delete-btn';
 
-import TasksListNumber from './components/task-list-number';
+import TaskListNumber from './components/task-list-number';
+
+import TaskList from './components/task-list';
 
 class App extends Component {
 
@@ -86,22 +88,9 @@ class App extends Component {
           </form>
         </div>
 
-        <ul id="list">
-          {
-            tasks.map(task => {
-              return <li key={task.id}>
-                <input
-                  type="checkbox"
-                  value={task.completed}
-                  onClick={() => this.toggleComplete(task.id)}
-                />
-                <span className={`${task.completed ? 'completed' : ''} read-item-title`}>{ task.name }</span>
-              </li>
-            })
-          }
-        </ul>
+        <TaskList tasks={tasks} toggleCompleteTask={this.toggleComplete} />
 
-        <TasksListNumber completedCount={this.completedCount()} tasksLength={tasks.length} />  
+        <TaskListNumber completedCount={this.completedCount()} tasksLength={tasks.length} />  
 
         <DeleteBtn completedCount={this.completedCount()} handleDelete={this.deleteCompleted} />
 
