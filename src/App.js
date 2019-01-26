@@ -6,6 +6,8 @@ import TaskListNumber from './components/task-list-number';
 
 import TaskList from './components/task-list';
 
+import TaskListForm from './components/task-list-form';
+
 class App extends Component {
 
   state = {
@@ -68,25 +70,7 @@ class App extends Component {
       <div id="wrapper">
         <h1>Simple To Do List Using ReactJS</h1>
 
-        <div>
-          <form onSubmit={this.onFormSubmit}>
-            <p>
-              <label htmlFor="todoItem">To Do Item</label><br />
-              <input id="todo-item"
-                name="taskName"
-                value={taskName}
-                onChange={this.onChange}
-                type="text" 
-                required
-                minLength="2"
-                maxLength="30"
-              />
-            </p>
-            <p>
-              <input type="submit" value="Add" />
-            </p>
-          </form>
-        </div>
+        <TaskListForm onFormSubmit={this.onFormSubmit} taskName={taskName} onFormChange={this.onChange} />
 
         <TaskList tasks={tasks} toggleCompleteTask={this.toggleComplete} />
 
