@@ -9,5 +9,5 @@ export default function DeleteBtn({ completedCount, handleDelete }) {
             >Delete completed ({completedCount}) tasks</button>
             : null
         }
-    </div>
+    </div>;
 };

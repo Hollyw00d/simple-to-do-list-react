@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-import DeleteBtn from './components/delete-btn'
+import DeleteBtn from './components/delete-btn';
+
+import TasksList from './components/task-list';
 
 class App extends Component {
 
@@ -99,11 +101,10 @@ class App extends Component {
           }
         </ul>
 
-        <div>
-          You have {this.completedCount()} of {tasks.length} items completed on your to do list.
-        </div>
+        <TasksList completedCount={this.completedCount()} tasksLength={tasks.length} />  
 
         <DeleteBtn completedCount={this.completedCount()} handleDelete={this.deleteCompleted} />
+
       </div>
     );
   };
