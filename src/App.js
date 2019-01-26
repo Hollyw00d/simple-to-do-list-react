@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import DeleteBtn from './components/delete-btn';
+import DeleteBtn from './components/delete-btn'
 
-import TaskListNumber from './components/task-list-number';
+import TaskListNumber from './components/task-list-number'
 
-import TaskList from './components/task-list';
+import TaskList from './components/task-list'
 
-import TaskListForm from './components/task-list-form';
+import TaskListForm from './components/task-list-form'
 
 class App extends Component {
 
@@ -14,11 +14,11 @@ class App extends Component {
     tasks: [],
     taskName: '',
     nextId: 1
-  };
+  }
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
-  };
+  }
 
   onFormSubmit = (e) => {
     e.preventDefault()
@@ -40,7 +40,6 @@ class App extends Component {
     })
   }
 
-  
   toggleComplete = (id) => {
     this.setState(prevState => ({
       tasks: prevState.tasks.map(task => {
@@ -52,17 +51,17 @@ class App extends Component {
           : task
       })
     }))
-  };
+  }
 
   completedCount = () => {
     return this.state.tasks.filter(task => task.completed).length
-  };
+  }
 
   deleteCompleted = () => {
     this.setState(prevState => ({
       tasks: prevState.tasks.filter(task => !task.completed)
     }))
-  };
+  }
 
   render() {
     const { tasks, taskName } = this.state
@@ -77,10 +76,9 @@ class App extends Component {
         <TaskListNumber completedCount={this.completedCount()} tasksLength={tasks.length} />  
 
         <DeleteBtn completedCount={this.completedCount()} handleDelete={this.deleteCompleted} />
-
       </div>
-    );
-  };
+    )
+  }
 }
 
-export default App;
+export default App

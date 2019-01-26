@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export default function TaskList({ tasks, toggleCompleteTask }) {
     return <ul id="list">
@@ -14,5 +14,5 @@ export default function TaskList({ tasks, toggleCompleteTask }) {
         </li>
       })
     }
-  </ul>;
-};
+  </ul>
+}
