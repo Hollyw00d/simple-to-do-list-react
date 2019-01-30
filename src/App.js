@@ -66,16 +66,16 @@ class App extends Component {
 
   editTask = (id) => {
     // Gets task to edit
-    const { tasks } = this.state;
-    const task = tasks.find(task => id === task.id);
+    const { tasks } = this.state
+    const task = tasks.find(task => id === task.id)
 
     // This is used to show the input
-    task.editing = true;
+    task.editing = true
 
     // Updates state
     this.setState({
       tasks
-    });
+    })
   }
 
   handleChange = (e, id) => {
