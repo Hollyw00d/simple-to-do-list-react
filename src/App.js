@@ -13,7 +13,8 @@ class App extends Component {
   state = {
     tasks: [],
     taskName: '',
-    nextId: 1
+    nextId: 1,
+    active: false
   }
 
   onChange = (e) => {
@@ -63,6 +64,38 @@ class App extends Component {
     }))
   }
 
+  editTask = (id) => {
+    // Gets task to edit
+    const { tasks } = this.state;
+    const task = tasks.find(task => id === task.id);
+
+    // This is used to show the input
+    task.editing = true;
+
+    // Updates state
+    this.setState({
+      tasks
+    });
+  }
+
+  handleChange = (e, id) => {
+    const newTaskName = e.target.value
+
+    // Gets task to edit
+    const { tasks } = this.state
+    const task = tasks.find(task => id === task.id)
+
+    task.name = newTaskName
+    
+    if(e.which === 13) {
+      delete task.editing
+    }
+
+    this.setState({
+      tasks
+    })
+  }
+
   render() {
     const { tasks, taskName } = this.state
     return (
@@ -71,7 +104,7 @@ class App extends Component {
 
         <TaskListForm onFormSubmit={this.onFormSubmit} taskName={taskName} onFormChange={this.onChange} />
 
-        <TaskList tasks={tasks} toggleCompleteTask={this.toggleComplete} />
+        <TaskList tasks={tasks} toggleCompleteTask={this.toggleComplete} editTask={this.editTask} handleChange={this.handleChange} />
 
         <TaskListNumber completedCount={this.completedCount()} tasksLength={tasks.length} />  
 
