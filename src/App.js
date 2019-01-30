@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 
 import DeleteBtn from './components/delete-btn'
 
-import TaskListNumber from './components/task-list-number'
+import TaskListCompleted from './components/task-list-completed'
 
 import TaskList from './components/task-list'
 
 import TaskListForm from './components/task-list-form'
+
+import TaskListTotal from './components/task-list-total'
 
 class App extends Component {
 
@@ -54,6 +56,11 @@ class App extends Component {
     }))
   }
 
+  taskCount = () => {
+    //return this.state.tasks.length
+    return 42
+  }
+
   completedCount = () => {
     return this.state.tasks.filter(task => task.completed).length
   }
@@ -98,6 +105,7 @@ class App extends Component {
 
   render() {
     const { tasks, taskName } = this.state
+    
     return (
       <div id="wrapper">
         <h1>Simple To Do List Using ReactJS</h1>
@@ -106,7 +114,9 @@ class App extends Component {
 
         <TaskList tasks={tasks} toggleCompleteTask={this.toggleComplete} editTask={this.editTask} handleChange={this.handleChange} />
 
-        <TaskListNumber completedCount={this.completedCount()} tasksLength={tasks.length} />  
+        <TaskListTotal tasksLength={tasks.length} />
+
+        <TaskListCompleted completedCount={this.completedCount()} tasksLength={tasks.length} />  
 
         <DeleteBtn completedCount={this.completedCount()} handleDelete={this.deleteCompleted} />
       </div>
