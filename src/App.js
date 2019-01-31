@@ -83,6 +83,8 @@ class App extends Component {
     this.setState({
       tasks
     })
+
+    console.log(task)
   }
 
   handleChange = (e, id) => {
@@ -95,7 +97,8 @@ class App extends Component {
     task.name = newTaskName
     
     if(e.which === 13) {
-      delete task.editing
+      task.editing = false
+      console.log(task)
     }
 
     this.setState({
@@ -103,15 +106,17 @@ class App extends Component {
     })
   }
 
-  handleBlur = (e, id) => {
+  handleBlur = (id) => {
 
     // Gets task to edit
     const { tasks } = this.state
     const task = tasks.find(task => id === task.id)
 
-    task.editing = true
+    task.editing = false
 
-    delete task.editing
+    this.setState({
+      tasks
+    })
 
     console.log(task)
   }
