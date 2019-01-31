@@ -83,8 +83,6 @@ class App extends Component {
     this.setState({
       tasks
     })
-
-    console.log(task)
   }
 
   handleChange = (e, id) => {
@@ -98,7 +96,6 @@ class App extends Component {
     
     if(e.which === 13) {
       task.editing = false
-      console.log(task)
     }
 
     this.setState({
@@ -117,8 +114,6 @@ class App extends Component {
     this.setState({
       tasks
     })
-
-    console.log(task)
   }
 
   render() {
