@@ -16,7 +16,7 @@ class App extends Component {
     tasks: [],
     taskName: '',
     nextId: 1,
-    active: false
+    editing: false
   }
 
   onChange = (e) => {
@@ -103,6 +103,19 @@ class App extends Component {
     })
   }
 
+  handleBlur = (e, id) => {
+
+    // Gets task to edit
+    const { tasks } = this.state
+    const task = tasks.find(task => id === task.id)
+
+    task.editing = true
+
+    delete task.editing
+
+    console.log(task)
+  }
+
   render() {
     const { tasks, taskName } = this.state
     
@@ -112,7 +125,7 @@ class App extends Component {
 
         <TaskListForm onFormSubmit={this.onFormSubmit} taskName={taskName} onFormChange={this.onChange} />
 
-        <TaskList tasks={tasks} toggleCompleteTask={this.toggleComplete} editTask={this.editTask} handleChange={this.handleChange} />
+        <TaskList tasks={tasks} toggleCompleteTask={this.toggleComplete} editTask={this.editTask} handleChange={this.handleChange} handleBlur={this.handleBlur} />
 
         <TaskListTotal tasksLength={tasks.length} />
 

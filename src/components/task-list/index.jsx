@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function TaskList({ tasks, toggleCompleteTask, editTask, handleChange }) {
+export default function TaskList({ tasks, toggleCompleteTask, editTask, handleChange, handleBlur }) {
     return <ul id="list">
     {
       tasks.map(task => {
@@ -20,6 +20,7 @@ export default function TaskList({ tasks, toggleCompleteTask, editTask, handleCh
           {task.editing && <input
             type="text"
             onKeyPress={(e) => handleChange(e, task.id)}
+            onBlur={(e) =>  handleBlur(e, task.id)}
             defaultValue={task.name}
             className="edit-item"
           />}
