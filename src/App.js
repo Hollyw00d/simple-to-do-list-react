@@ -103,11 +103,14 @@ class App extends Component {
     })
   }
 
-  handleBlur = (id) => {
+  handleBlur = (e, id) => {
+    const newTaskName = e.target.value
 
     // Gets task to edit
     const { tasks } = this.state
     const task = tasks.find(task => id === task.id)
+
+    task.name = newTaskName
 
     task.editing = false
 
